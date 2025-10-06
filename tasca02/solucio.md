@@ -4,7 +4,7 @@
 **Alumne:** Biel Batalla Rabassa  
 **Data:** 30/09/2025  
 **Curs:** SMX 2B  
-**Unitat:** T02  
+**Unitat:** T02 (https://drive.google.com/drive/folders/1xEQrf-oKSBCoxjOjroSRnflnILGCvjE3?usp=sharing)
 
 ---
 
