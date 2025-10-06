@@ -1,2 +1,2 @@
 # Projecte2
-Aquest és un repositori del Projecte 2.
+Aquest espai és un espai IT on trobaràs totes les tasques de la Consultoria EverPia.
