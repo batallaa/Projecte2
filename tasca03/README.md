@@ -2,50 +2,84 @@
 
 ## Breu descripció
 
-Després de la primera feina exitosa, us arriba un encàrrec urgent. Rebreu formació prèvia sobre seguretat lògica per afrontar la tasca.
+Després de la primera feina exitosa, us arriba un encàrrec urgent que obliga a que us hi poseu per donar-li solució.  
+Com a fase prèvia rebreu una formació sobre la seguretat lògica que us permetrà tenir els coneixements necessaris per afrontar la tasca.
 
-Un client ha portat un portàtil amb **Zorin OS** (Linux amb entorn gràfic). El directiu usuari ha oblidat la contrasenya i cal recuperar l’accés perquè hi ha documentació important. Per evitar riscos sobre l’equip original, el disc s’ha **clonat** i se us ha lliurat el **disc virtual** per treballar sobre la còpia.
+Han arribat a la consultora un equip provinent d’un client que demana que els hi solucionem el problema. Tenen un portàtil amb Zorin OS (un Linux amb entorn gràfic) que usava habitualment un directiu. El problema és que ha oblidat la contrasenya i és necessari poder recuperar l’accés perquè hi ha documentació molt important que cal recuperar. Per evitar que una acció catastròfica pugui danyar l’equip original, ens han clonat el disc en un disc virtual perquè hi treballeu.
 
-Objectius principals:
+![Imatge de dos nois treballant](imagen02.png)
 
-- Recuperar l’accés al sistema Linux (Zorin OS) des del disc virtual clonat.  
+Per tant, el primer pas serà crear una màquina virtual a la qual connectareu aquest disc. A continuació, cal que entreu a la màquina virtual, trobeu el nom de l’usuari existent i assigneu-li una contrasenya nova.
+
+Quan el client és informat del senzill que és accedir a l’equip, demana si n’hi ha alguna manera de fortificar el sistema, ja que té por que si algú roba el portàtil hi pugui accedir a la informació que hi conté. Per tant, ara ens demanen que cerquem solucions per tal d’evitar que es pugui reiniciar la contrasenya amb el procediment anterior.  
+Investigueu el procediment per tal que l’accés al GRUB quedi protegit per contrasenya per evitar canvis de configuració.
+
+---
+
+## Objectius
+
+- Recuperar l’accés a un sistema Linux (Zorin OS) a partir d’un disc virtual clonat.  
 - Identificar l’usuari existent i assignar-li una nova contrasenya.  
-- Investigar i implementar mesures per **fortificar l’accés al GRUB** (protecció amb contrasenya i bones pràctiques).  
-- Documentar tot el procediment amb captures i pujar-ho al repositori.
+- Investigar i implementar mesures per fortificar l’accés al GRUB (incloent protecció amb contrasenya).  
+- Documentar tot el procediment (amb imatges) i pujar-ho al vostre repositori.
 
 ---
 
 ## Procediment individual (resum de passos)
 
-### 1. Preparar l’entorn
-- Crear una **màquina virtual (VM)** (per exemple VirtualBox, VMware, etc.).  
-- Connectar el **disc virtual** proporcionat a la VM com a dispositiu d’arrencada o segon disc, segons es requereixi.
+### Preparar l’entorn
+- Crear una màquina virtual (VM) i connectar-hi el disc virtual proporcionat.
+
+### Vulnerar l’accés al GRUB del Linux
+- Arrencar la VM i usar el menú de GRUB per accedir a un mode que permeti obtenir un shell de recuperació (ex.: editar la línia del kernel i afegir `init=/bin/bash` o arrancar en mode single-user, segons calgui).
+
+### Identificar l’usuari del sistema
+- Un cop amb accés a la shell/entorn de recuperació, consultar `/etc/passwd` o `/home` per identificar el nom d’usuari existent.
+
+### Modificar la contrasenya
+- Remuntar el sistema en lectura-escriptura si cal (p. ex. `mount -o remount,rw /`) i usar `passwd <usuari>` per assignar una nova contrasenya.  
+- Verificar que l’usuari pot iniciar sessió a l’entorn gràfic amb la nova contrasenya.
+
+### Investigar com fortificar l’accés al GRUB
+- Recercar i documentar procediments per protegir GRUB amb contrasenya i altres bones pràctiques (per exemple: xifrat del disc, UEFI Secure Boot, desactivar arrencada des de dispositius externs, usar TPM, etc.).  
+- És molt important indicar les fonts d’informació que s’utilitzin.
+
+### Configurar la màquina virtual per fortificar l’accés al GRUB
+- Implementar la protecció del GRUB (creació d’una contrasenya per al menú de grub, modificar `/etc/grub.d/40_custom` o `/etc/grub.d/01_users`, executar `grub-mkpasswd-pbkdf2`, i actualitzar la configuració amb `update-grub`).  
+- Aplicar altres mesures recomanades i verificables a la VM.
+
+### Documentar el procediment
+- Crear un document detallat amb totes les accions realitzades, captures de pantalla i comandes utilitzades.  
+- Preparar el fitxer per pujar-lo al repositori.
 
 ---
 
-### 2. Vulnerar l’accés al GRUB del Linux (recuperació)
-- Arrencar la VM i, en el menú del **GRUB**, editar l’entrada del kernel per obtenir un shell de recuperació:
-  - Opció 1: Editar la línia de kernel i afegir `init=/bin/bash`.  
-  - Opció 2: Arrencar en mode **single-user** (`systemd.unit=rescue.target` o `single`) segons la versió i configuració.
-- Aquest pas pot donar accés a una shell amb permisos root (dependrà de la configuració; pot ser necessari remuntar el sistema en lectura-escriptura).
+## Entregables
+
+Documentació en format (PDF / Markdown) que inclogui:
+
+- Descripció dels passos seguits.  
+- Comandes executades.  
+- Captures de pantalla (imatges) que mostrin cada fase clau (arrencada GRUB, identificació d’usuari, canvi de contrasenya, configuració de GRUB amb contrasenya).  
+- Referències / fonts utilitzades.  
+- Fitxer o instruccions per a la configuració del GRUB (snippets de configuració).  
+- Evidència que l’usuari recuperat pot iniciar sessió amb la nova contrasenya.  
+- Evidència que la protecció del GRUB funciona (p. ex. prova d’intent d’edició del menú que requereix contrasenya).
 
 ---
 
-### 3. Identificar l’usuari del sistema
-- Un cop a la shell/entorn de recuperació, identificar els usuaris disponibles:
-  - Consultar `/etc/passwd`:
-    ```bash
-    cat /etc/passwd | grep "/home"
-    ```
-  - O llistar directoris de /home:
-    ```bash
-    ls -la /home
-    ```
+## Material de suport
+
+- Disc virtual (proporcionat pel client).  
+- Apunts: RA1AA4 Seguretat Lògica.  
+- Article de referència per a recuperació de contrasenya en Linux:  
+  [Recuperant Password en Linux](https://waytoit.wordpress.com/2013/06/06/recuperando-password-en-ubuntu/)
 
 ---
 
-### 4. Modificar la contrasenya
-- Si el sistema està muntat en només lectura, remuntar-lo en lectura-escriptura:
-  ```bash
-  mount -o remount,rw /
+## Notes i bones pràctiques
 
+- Feu sempre les operacions sobre la còpia del disc (no sobre l’equip físic original).  
+- Documenteu la seqüència exacta de comandes i captures per a reproducibilitat i auditories.  
+- Quan implementeu proteccions al GRUB, proveu-les completament (arrencada, edició, recuperació) per assegurar que no bloquegeu l’accés legítim de forma irreversible.  
+- Considereu mesures addicionals (xifrat complet del disc amb LUKS, contrasenyes de firmware/BIOS/UEFI, deshabilitar arrencada per USB, actualització de GRUB i del sistema) per augmentar la seguretat.
