@@ -8,8 +8,8 @@ Les tasques que caldrà desenvolupar en aquest projecte són les següents:
 
 - **T00** – Presentació del projecte i inicialització del Kanban (1h)  
 - **T01** – GitHub (PI)  
-- **T02** – Elecció del SAI (Seguretat)  
-- **T03** – Seguretat Lògica (Seguretat)  
+- **T02** – Elecció del SAI (Seguretat) - [Selecció d’un SAI per una empresa client](/Projecte2/tasca02/README.md)
+- **T03** – Seguretat Lògica (Seguretat) - [Seguretat Lògica: recuperant accés a sistemes](/Projecte2/tasca03/README.md)
 - **T04** – Configurant i administrant un servidor Linux (SOX)  
 - **T05** – Servei de DHCP. Introducció teòrica (Serveis)  
 - **T06** – Configuració DHCP – pràctica (Serveis)  
