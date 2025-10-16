@@ -2,6 +2,8 @@
 
 ## Part 1: Canvi de password
 
+![Foto 01 guia](/tasca03/img/01.jpg)
+
 Entrem a la màquina que hem creat amb el disc de Miquel Valls. Si no s’obra aquesta configuració, pressionarem en el moment d’arrancada de la màquina `**SHIFT + tecla aleatòria**`.
 
 Seleccionem **“Advanced options for Zorin”**.
