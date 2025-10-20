@@ -14,7 +14,7 @@ Les tasques que caldrà desenvolupar en aquest projecte són les següents:
 - **T05** – Servei de DHCP. Introducció teòrica (Serveis)  
 - **T06** – Configuració DHCP – pràctica (Serveis)  
 - **T07** – Sostenibilitat  
-- **T08** – Assessorament de domini i hosting (per client assignat) – Aplicacions Web  
+- **T08** – Assessorament de domini i hosting (per client assignat) – Aplicacions Web - [Assessorament de domini i hosting](/Projecte2/tasca08/README.md)
 - **T09** – Donar-se d’alta en un hosting gratuït – Aplicacions Web  
 - **T10** – Màsterclass de Markdown  
 - **T11** – Instal·lació de WordPress en local amb WP Local – Aplicacions Web  
