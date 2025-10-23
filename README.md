@@ -8,13 +8,13 @@ Les tasques que caldrà desenvolupar en aquest projecte són les següents:
 
 - **T00** – Presentació del projecte i inicialització del Kanban (1h)  
 - **T01** – GitHub (PI)  
-- **T02** – Elecció del SAI (Seguretat) - [Selecció d’un SAI per una empresa client](/Projecte2/tasca02/README.md)
-- **T03** – Seguretat Lògica (Seguretat) - [Seguretat Lògica: recuperant accés a sistemes](/Projecte2/tasca03/README.md)
+- **T02** – Elecció del SAI (Seguretat) - [Selecció d’un SAI per una empresa client](/tasca02)
+- **T03** – Seguretat Lògica (Seguretat) - [Seguretat Lògica: recuperant accés a sistemes](/tasca03)
 - **T04** – Configurant i administrant un servidor Linux (SOX)  
 - **T05** – Servei de DHCP. Introducció teòrica (Serveis)  
 - **T06** – Configuració DHCP – pràctica (Serveis)  
 - **T07** – Sostenibilitat  
-- **T08** – Assessorament de domini i hosting (per client assignat) – Aplicacions Web - [Assessorament de domini i hosting](/Projecte2/tasca08/README.md)
+- **T08** – Assessorament de domini i hosting (per client assignat) – Aplicacions Web - [Assessorament de domini i hosting](/tasca08)
 - **T09** – Donar-se d’alta en un hosting gratuït – Aplicacions Web  
 - **T10** – Màsterclass de Markdown  
 - **T11** – Instal·lació de WordPress en local amb WP Local – Aplicacions Web  
